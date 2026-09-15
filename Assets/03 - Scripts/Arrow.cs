@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class Arrow : DamageSource
 {
     [SerializeField] private float lifetime = 3f;
+
+    public override int GetDamage() => Random.Range(5, 11);
 
     void Start()
     {
@@ -11,8 +13,8 @@ public class Arrow : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Se plante dans les murs et le décor ; les dégâts au héros sont gérés par PlayerHealth
-        if (other.isTrigger || other.CompareTag("Player") || other.GetComponent<Enemy>() != null) return;
+        // Se plante dans le héros, les murs et le décor ; traverse les ennemis
+        if (other.isTrigger || other.GetComponent<Enemy>() != null) return;
         Destroy(gameObject);
     }
 }

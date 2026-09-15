@@ -13,27 +13,11 @@ public class PlayerHealth : MonoBehaviour, IEntity
         healthBar.Show(health);
     }
 
-    // Dégâts reçus : un if par danger
+    // Dégâts reçus : un nouveau danger n'a pas besoin de modifier ce fichier
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Spider"))
-        {
-            TakeDamage(10);
-        }
-        else if (other.CompareTag("Arrow"))
-        {
-            TakeDamage(Random.Range(5, 11));
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("SpikeTrap"))
-        {
-            TakeDamage(25);
-        }
-        else if (other.CompareTag("Explosion"))
-        {
-            TakeDamage(30);
-        }
-        // nouveau danger ? on revient modifier ce fichier
+        if (other.TryGetComponent(out DamageSource source))
+            TakeDamage(source.GetDamage());
     }
 
     public void TakeDamage(int amount)

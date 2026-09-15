@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class Explosion : DamageSource
 {
-    [SerializeField] private int damage = 30;   // pour les ennemis ; le héros réagit au tag « Explosion »
+    [SerializeField] private int damage = 30;
     [SerializeField] private float duration = 0.3f;
+
+    public override int GetDamage() => damage;
 
     void Start()
     {
