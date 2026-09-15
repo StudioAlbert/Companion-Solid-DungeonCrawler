@@ -1,20 +1,11 @@
 using UnityEngine;
 
-public class ExplodingBarrel : Enemy
+// Le baril ne promet que ce qu'il sait faire : prendre des dégâts, et exploser.
+public class ExplodingBarrel : MonoBehaviour, IDamageable
 {
     [SerializeField] private GameObject explosionPrefab;
 
-    // Un baril ne bouge pas
-    public override void Move(Vector3 target) { }
-
-    // Un baril n'attaque pas
-    public override void Attack(PlayerHealth player)
-    {
-        throw new System.NotSupportedException("Un baril n'attaque pas");
-    }
-
-    // Au premier coup, il explose
-    public override void TakeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);

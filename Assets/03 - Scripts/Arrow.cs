@@ -13,8 +13,8 @@ public class Arrow : DamageSource
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Se plante dans le héros, les murs et le décor ; traverse les ennemis
-        if (other.isTrigger || other.GetComponent<Enemy>() != null) return;
+        // Se plante dans le héros, les murs et le décor ; traverse les ennemis et les barils
+        if (other.isTrigger || other.GetComponent<IDamageable>() != null) return;
         Destroy(gameObject);
     }
 }

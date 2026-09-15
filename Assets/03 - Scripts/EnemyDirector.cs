@@ -1,37 +1,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Fait agir chaque ennemi de la salle.
+// Fait agir chaque ennemi selon ce qu'il sait faire, sans connaître son type.
 public class EnemyDirector : MonoBehaviour
 {
-    private readonly List<Enemy> enemies = new List<Enemy>();
-    private readonly Dictionary<Enemy, float> nextAttackTimes = new Dictionary<Enemy, float>();
+    private readonly List<IMovable> movers = new List<IMovable>();
+    private readonly List<IAttacker> attackers = new List<IAttacker>();
+    private readonly Dictionary<IAttacker, float> nextAttackTimes = new Dictionary<IAttacker, float>();
     private PlayerHealth player;
 
     void Start()
     {
-        enemies.AddRange(FindObjectsByType<Enemy>());
+        foreach (MonoBehaviour behaviour in FindObjectsByType<MonoBehaviour>())
+        {
+            if (behaviour is IMovable mover) movers.Add(mover);
+            if (behaviour is IAttacker attacker) attackers.Add(attacker);
+        }
         player = FindAnyObjectByType<PlayerHealth>();
     }
 
     void Update()
     {
         if (player == null) return;
-        enemies.RemoveAll(enemy => enemy == null);
 
-        foreach (Enemy enemy in enemies)
+        // Un ennemi détruit n'est « null » qu'une fois vu comme objet Unity
+        movers.RemoveAll(mover => (Object)mover == null);
+        attackers.RemoveAll(attacker => (Object)attacker == null);
+
+        foreach (IMovable mover in movers)
+            mover.Move(player.transform.position);
+
+        foreach (IAttacker attacker in attackers)
         {
-            enemy.Move(player.transform.position);
-
-            // Le baril hérite d'Attack mais ne peut pas attaquer
-            if (enemy is ExplodingBarrel) continue;
-
-            float distance = Vector2.Distance(enemy.transform.position, player.transform.position);
-            nextAttackTimes.TryGetValue(enemy, out float nextAttack);
-            if (distance <= enemy.AttackRange && Time.time >= nextAttack)
+            // Tous les attaquants du donjon sont des composants : ils ont une position
+            Vector3 position = ((Component)attacker).transform.position;
+            float distance = Vector2.Distance(position, player.transform.position);
+            nextAttackTimes.TryGetValue(attacker, out float nextAttack);
+            if (distance <= attacker.AttackRange && Time.time >= nextAttack)
             {
-                enemy.Attack(player);
-                nextAttackTimes[enemy] = Time.time + enemy.AttackCooldown;
+                attacker.Attack(player);
+                nextAttackTimes[attacker] = Time.time + attacker.AttackCooldown;
             }
         }
     }

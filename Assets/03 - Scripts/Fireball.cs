@@ -14,7 +14,7 @@ public class Fireball : MonoBehaviour
     {
         // Traverse le héros et les zones de déclenchement, s'arrête sur tout le reste
         if (other.CompareTag("Player") || other.isTrigger) return;
-        if (other.TryGetComponent(out Enemy enemy)) enemy.TakeDamage(damage);
+        if (other.TryGetComponent(out IDamageable target)) target.TakeDamage(damage);
         Destroy(gameObject);
     }
 }

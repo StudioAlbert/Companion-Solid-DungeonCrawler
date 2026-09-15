@@ -151,7 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aba448aafbf4e34a9f43c188af90df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplodingBarrel
-  health: 1
-  attackRange: 1
-  attackCooldown: 1.5
   explosionPrefab: {fileID: 6172577795995621621, guid: cf98cd19d51702f489067b11180d2a58, type: 3}

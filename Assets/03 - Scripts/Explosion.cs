@@ -14,7 +14,7 @@ public class Explosion : DamageSource
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Blesse les ennemis proches : un baril voisin explose à son tour
-        if (other.TryGetComponent(out Enemy enemy)) enemy.TakeDamage(damage);
+        // Blesse tout ce qui peut prendre des dégâts : un baril voisin explose à son tour
+        if (other.TryGetComponent(out IDamageable target)) target.TakeDamage(damage);
     }
 }
