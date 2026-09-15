@@ -8,7 +8,7 @@ public class ExplodingBarrel : Enemy
     public override void Move(Vector3 target) { }
 
     // Un baril n'attaque pas
-    public override void Attack(PlayerController player)
+    public override void Attack(PlayerHealth player)
     {
         throw new System.NotSupportedException("Un baril n'attaque pas");
     }

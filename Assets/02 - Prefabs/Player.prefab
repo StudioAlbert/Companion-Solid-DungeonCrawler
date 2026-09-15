@@ -12,7 +12,10 @@ GameObject:
   - component: {fileID: 5273464751107976500}
   - component: {fileID: 6126638220913826276}
   - component: {fileID: 6456619956237938606}
-  - component: {fileID: 6424410395638455439}
+  - component: {fileID: 2683716975953617108}
+  - component: {fileID: 818126864760581361}
+  - component: {fileID: 6194800574295711782}
+  - component: {fileID: 6547416310239367807}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -158,7 +161,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.1}
   m_Size: {x: 0.6, y: 0.8}
   m_Direction: 0
---- !u!114 &6424410395638455439
+--- !u!114 &2683716975953617108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,11 +170,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 3526015059441109507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4243797919d78a747b22defa564be5a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7629123fa3b41814b8f123c11c72c159, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 5
+--- !u!114 &818126864760581361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526015059441109507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de9dfc0561273d43a08d6f9c066de4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
   fireballPrefab: {fileID: 6208042637926474551, guid: a1806b942ac5e1344b2a021ffc31b67d, type: 3}
   fireballSpeed: 8
+--- !u!114 &6194800574295711782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526015059441109507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6804e81d5374c5b44a6831a3d83f3d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
-  healthLabel: {fileID: 0}
+  healthBar: {fileID: 0}
+--- !u!114 &6547416310239367807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526015059441109507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1540224ec6471044b64f76a0ae82891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractor
+  interactRadius: 1

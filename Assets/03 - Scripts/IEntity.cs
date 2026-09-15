@@ -4,8 +4,8 @@ using UnityEngine;
 public interface IEntity
 {
     void Move(Vector3 target);
-    void Attack(PlayerController player);
+    void Attack(PlayerHealth player);
     void TakeDamage(int amount);
     void Talk();
-    void Use(PlayerController user);
+    void Use(PlayerHealth user);
 }

@@ -11,7 +11,7 @@ public abstract class Enemy : MonoBehaviour, IEntity
     public float AttackCooldown => attackCooldown;
 
     public abstract void Move(Vector3 target);
-    public abstract void Attack(PlayerController player);
+    public abstract void Attack(PlayerHealth player);
 
     public virtual void TakeDamage(int amount)
     {
@@ -21,5 +21,5 @@ public abstract class Enemy : MonoBehaviour, IEntity
 
     // Imposées par IEntity : un ennemi ne parle pas et ne s'utilise pas
     public void Talk() { }
-    public void Use(PlayerController user) { }
+    public void Use(PlayerHealth user) { }
 }

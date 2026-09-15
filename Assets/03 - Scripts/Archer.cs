@@ -8,7 +8,7 @@ public class Archer : Enemy
     // Un archer tire depuis son poste : il ne se déplace pas
     public override void Move(Vector3 target) { }
 
-    public override void Attack(PlayerController player)
+    public override void Attack(PlayerHealth player)
     {
         Vector2 direction = (player.transform.position - transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

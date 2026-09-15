@@ -6,12 +6,12 @@ public class EnemyDirector : MonoBehaviour
 {
     private readonly List<Enemy> enemies = new List<Enemy>();
     private readonly Dictionary<Enemy, float> nextAttackTimes = new Dictionary<Enemy, float>();
-    private PlayerController player;
+    private PlayerHealth player;
 
     void Start()
     {
         enemies.AddRange(FindObjectsByType<Enemy>());
-        player = FindAnyObjectByType<PlayerController>();
+        player = FindAnyObjectByType<PlayerHealth>();
     }
 
     void Update()

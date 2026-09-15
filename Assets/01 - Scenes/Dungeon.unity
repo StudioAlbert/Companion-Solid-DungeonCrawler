@@ -730,10 +730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6424410395638455439, guid: 21b1524b91b936a4a921444fa1efa2d4, type: 3}
-      propertyPath: healthLabel
+    - target: {fileID: 6194800574295711782, guid: 21b1524b91b936a4a921444fa1efa2d4, type: 3}
+      propertyPath: healthBar
       value: 
-      objectReference: {fileID: 1141374710}
+      objectReference: {fileID: 1141374713}
     - target: {fileID: 8583150899711866731, guid: 21b1524b91b936a4a921444fa1efa2d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5
@@ -1713,6 +1713,7 @@ GameObject:
   - component: {fileID: 1141374712}
   - component: {fileID: 1141374711}
   - component: {fileID: 1141374710}
+  - component: {fileID: 1141374713}
   m_Layer: 0
   m_Name: HealthLabel
   m_TagString: Untagged
@@ -1839,6 +1840,19 @@ RectTransform:
   m_AnchoredPosition: {x: 40, y: -24}
   m_SizeDelta: {x: 480, y: 90}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1141374713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141374709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d508d701a3ef64caa010173c1b7471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
+  label: {fileID: 1141374710}
 --- !u!1 &1175423932
 GameObject:
   m_ObjectHideFlags: 0
@@ -6235,7 +6249,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2

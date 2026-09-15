@@ -16,7 +16,7 @@ public class Merchant : MonoBehaviour, IEntity
 
     // Imposées par IEntity
     public void Move(Vector3 target) { }
-    public void Attack(PlayerController player) { }   // un marchand n'attaque pas
-    public void TakeDamage(int amount) { }            // invulnérable
-    public void Use(PlayerController user) { }
+    public void Attack(PlayerHealth player) { }   // un marchand n'attaque pas
+    public void TakeDamage(int amount) { }        // invulnérable
+    public void Use(PlayerHealth user) { }
 }

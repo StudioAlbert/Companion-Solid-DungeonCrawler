@@ -24,7 +24,7 @@ public class Spider : Enemy
         body.linearVelocity = chasing ? toTarget.normalized * speed : Vector2.zero;
     }
 
-    public override void Attack(PlayerController player)
+    public override void Attack(PlayerHealth player)
     {
         StartCoroutine(Bite());
     }

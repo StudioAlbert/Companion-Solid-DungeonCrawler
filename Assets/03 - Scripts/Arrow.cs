@@ -11,7 +11,7 @@ public class Arrow : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Se plante dans les murs et le décor ; les dégâts au héros sont gérés par PlayerController
+        // Se plante dans les murs et le décor ; les dégâts au héros sont gérés par PlayerHealth
         if (other.isTrigger || other.CompareTag("Player") || other.GetComponent<Enemy>() != null) return;
         Destroy(gameObject);
     }
