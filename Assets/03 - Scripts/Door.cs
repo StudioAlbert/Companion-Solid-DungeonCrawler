@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, ISwitchable
 {
     [SerializeField] private Sprite closedSprite;
     [SerializeField] private Sprite openSprite;
@@ -14,13 +14,15 @@ public class Door : MonoBehaviour
         doorCollider = GetComponent<Collider2D>();
     }
 
-    public void Open()
+    // Ouvre la porte
+    public void Activate()
     {
         spriteRenderer.sprite = openSprite;
         doorCollider.enabled = false;
     }
 
-    public void Close()
+    // Ferme la porte
+    public void Deactivate()
     {
         spriteRenderer.sprite = closedSprite;
         doorCollider.enabled = true;

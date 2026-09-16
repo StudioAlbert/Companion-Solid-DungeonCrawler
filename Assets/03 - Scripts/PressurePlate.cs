@@ -1,20 +1,28 @@
 using UnityEngine;
 
-// La plaque connaît directement chaque mécanisme qu'elle peut actionner.
+// La plaque ne connaît qu'un contrat : n'importe quel mécanisme activable.
 public class PressurePlate : MonoBehaviour
 {
-    [SerializeField] private Door door;
-    [SerializeField] private WallFountain fountain;
+    [SerializeField] private GameObject target;   // doit porter un composant ISwitchable
     [SerializeField] private Color idleColor = new Color(0.78f, 0.78f, 0.85f);
     [SerializeField] private Color activeColor = new Color(0.55f, 0.85f, 0.6f);
 
+    private ISwitchable switchable;
     private SpriteRenderer spriteRenderer;
     private bool isOn;
 
     void Awake()
     {
+        switchable = target.GetComponent<ISwitchable>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = idleColor;
+    }
+
+    // Signale dès l'éditeur une cible qui ne peut pas être actionnée
+    void OnValidate()
+    {
+        if (target != null && target.GetComponent<ISwitchable>() == null)
+            Debug.LogWarning(target.name + " n'implémente pas ISwitchable : la plaque ne pourra pas l'actionner", this);
     }
 
     // Chaque passage sur la plaque inverse son état
@@ -24,15 +32,7 @@ public class PressurePlate : MonoBehaviour
         isOn = !isOn;
         spriteRenderer.color = isOn ? activeColor : idleColor;
 
-        if (door != null)
-        {
-            if (isOn) door.Open();
-            else door.Close();
-        }
-        if (fountain != null)
-        {
-            if (isOn) fountain.TurnOn();
-            else fountain.TurnOff();
-        }
+        if (isOn) switchable.Activate();
+        else switchable.Deactivate();
     }
 }

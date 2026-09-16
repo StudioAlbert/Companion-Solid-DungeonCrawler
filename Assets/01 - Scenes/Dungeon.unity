@@ -285,17 +285,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3f7758bfbef4ab41b964db91af20277, type: 3}
---- !u!114 &356851788 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6654570678606561358, guid: b3f7758bfbef4ab41b964db91af20277, type: 3}
-  m_PrefabInstance: {fileID: 356851787}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6502178338e687f4099330963ff65cef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
 --- !u!4 &356851789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7363711534254453291, guid: b3f7758bfbef4ab41b964db91af20277, type: 3}
@@ -394,17 +383,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33eed6bb27df3b64b92f85868d6a62ec, type: 3}
---- !u!114 &477727718 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7863764484110269076, guid: 33eed6bb27df3b64b92f85868d6a62ec, type: 3}
-  m_PrefabInstance: {fileID: 477727717}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dab28b864aa28c459c89da441817cd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WallFountain
 --- !u!4 &477727719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6928141160076912148, guid: 33eed6bb27df3b64b92f85868d6a62ec, type: 3}
@@ -1360,9 +1338,9 @@ PrefabInstance:
       value: PressurePlate (Porte)
       objectReference: {fileID: 0}
     - target: {fileID: 6912470608544818942, guid: eda210e3bfb7359469e5ca54325e0322, type: 3}
-      propertyPath: door
+      propertyPath: target
       value: 
-      objectReference: {fileID: 356851788}
+      objectReference: {fileID: 1767948143}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1980,6 +1958,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1283287308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3044492439512165389, guid: 33eed6bb27df3b64b92f85868d6a62ec, type: 3}
+  m_PrefabInstance: {fileID: 477727717}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1339766613
 GameObject:
   m_ObjectHideFlags: 0
@@ -6170,6 +6153,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1767948143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7112905180319117349, guid: b3f7758bfbef4ab41b964db91af20277, type: 3}
+  m_PrefabInstance: {fileID: 356851787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1784955242
 GameObject:
   m_ObjectHideFlags: 0
@@ -6680,9 +6668,9 @@ PrefabInstance:
       value: PressurePlate (Fontaine)
       objectReference: {fileID: 0}
     - target: {fileID: 6912470608544818942, guid: eda210e3bfb7359469e5ca54325e0322, type: 3}
-      propertyPath: fountain
+      propertyPath: target
       value: 
-      objectReference: {fileID: 477727718}
+      objectReference: {fileID: 1283287308}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
