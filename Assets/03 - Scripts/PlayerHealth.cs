@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour, IEntity
+public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private HealthBar healthBar;
@@ -32,11 +32,4 @@ public class PlayerHealth : MonoBehaviour, IEntity
         health = Mathf.Min(health + amount, maxHealth);
         healthBar.Show(health);
     }
-
-    // Imposées par IEntity : le héros ne se déplace pas sur ordre, n'attaque pas un héros,
-    // ne parle pas et ne s'utilise pas
-    public void Move(Vector3 target) { }
-    public void Attack(PlayerHealth player) { }
-    public void Talk() { }
-    public void Use(PlayerHealth user) { }
 }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,19 +15,15 @@ public class PlayerInteractor : MonoBehaviour
         interactAction = InputSystem.actions.FindAction("Interact");
     }
 
-    // On parle à tout ce qui est proche, et on utilise tout ce qui est proche
+    // On parle à ce qui sait parler, on utilise ce qui s'utilise
     void Update()
     {
         if (!interactAction.WasPressedThisFrame()) return;
 
-        var reached = new HashSet<IEntity>();
         foreach (Collider2D hit in Physics2D.OverlapCircleAll(transform.position, interactRadius))
         {
-            if (hit.TryGetComponent(out IEntity entity) && entity != (IEntity)health && reached.Add(entity))
-            {
-                entity.Talk();
-                entity.Use(health);
-            }
+            if (hit.TryGetComponent(out ITalkable talkable)) talkable.Talk();
+            if (hit.TryGetComponent(out IUsable usable)) usable.Use(health);
         }
     }
 }

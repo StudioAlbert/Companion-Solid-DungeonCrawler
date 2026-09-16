@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Potion : MonoBehaviour, IEntity
+public class Potion : MonoBehaviour, IUsable
 {
     [SerializeField] private int healAmount = 30;
 
@@ -9,10 +9,4 @@ public class Potion : MonoBehaviour, IEntity
         user.Heal(healAmount);
         Destroy(gameObject);
     }
-
-    // Imposées par IEntity
-    public void Move(Vector3 target) { }
-    public void Attack(PlayerHealth player) { }
-    public void TakeDamage(int amount) { }
-    public void Talk() { }
 }
