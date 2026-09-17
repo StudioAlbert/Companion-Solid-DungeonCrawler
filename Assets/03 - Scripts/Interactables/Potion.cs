@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Potion : MonoBehaviour, IEntity
+public class Potion : MonoBehaviour, IInteractable
 {
     [SerializeField] private int healAmount = 30;
 

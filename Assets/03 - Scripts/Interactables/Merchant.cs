@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Merchant : MonoBehaviour, IEntity
+public class Merchant : MonoBehaviour, IInteractable
 {
     private AudioSource voice;   // le jingle est réglé sur l'AudioSource
 

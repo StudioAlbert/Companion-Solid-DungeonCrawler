@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // Interface « tout-en-un » : chaque entité du donjon doit tout implémenter.
-public interface IEntity
+public interface IInteractable
 {
     void Move(Vector3 target);
     void Attack(PlayerController player);

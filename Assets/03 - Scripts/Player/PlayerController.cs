@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // Script fourre-tout : déplacement, attaque, vie, interface, dégâts reçus et interactions.
-public class PlayerController : MonoBehaviour, IEntity
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private GameObject fireballPrefab;
@@ -57,13 +57,16 @@ public class PlayerController : MonoBehaviour, IEntity
         // Interaction : on parle à tout ce qui est proche, et on utilise tout ce qui est proche
         if (interactAction.WasPressedThisFrame())
         {
-            var reached = new HashSet<IEntity>();
+            var reached = new HashSet<IInteractable>();
             foreach (Collider2D hit in Physics2D.OverlapCircleAll(transform.position, interactRadius))
             {
-                if (hit.TryGetComponent(out IEntity entity) && entity != (IEntity)this && reached.Add(entity))
-                {
-                    entity.Talk();
-                    entity.Use(this);
+                if (hit.TryGetComponent(out IInteractable entity))
+                { 
+                    if(entity != this as IInteractable && reached.Add(entity));
+                    {
+                        entity.Talk();
+                        entity.Use(this);
+                    }
                 }
             }
         }
@@ -105,10 +108,4 @@ public class PlayerController : MonoBehaviour, IEntity
         healthLabel.text = "PV : " + health;
     }
 
-    // Imposées par IEntity : le héros est piloté au clavier, n'attaque pas un héros,
-    // ne parle pas et ne s'utilise pas
-    public void Move(Vector3 target) { }
-    public void Attack(PlayerController player) { }
-    public void Talk() { }
-    public void Use(PlayerController user) { }
 }

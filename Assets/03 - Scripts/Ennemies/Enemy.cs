@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // Classe mère des ennemis : chaque sous-classe hérite de toutes ses promesses.
-public abstract class Enemy : MonoBehaviour, IEntity
+public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] private int health = 30;
     [SerializeField] private float attackRange = 1f;
@@ -19,7 +19,4 @@ public abstract class Enemy : MonoBehaviour, IEntity
         if (health <= 0) Destroy(gameObject);
     }
 
-    // Imposées par IEntity : un ennemi ne parle pas et ne s'utilise pas
-    public void Talk() { }
-    public void Use(PlayerController user) { }
 }
